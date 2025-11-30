@@ -642,6 +642,23 @@
         grid-template-columns: minmax(0, 1fr);
       }
     }
+    /* --- Dark theme tweaks: stronger contrast --- */
+
+/* Darker, simpler background so it doesn't look foggy */
+html[data-theme='dark'] body {
+  background: radial-gradient(circle at top, #020617 0, #020617 60%);
+}
+
+/* Make cards clearly stand out from the page */
+html[data-theme='dark'] .about-card,
+html[data-theme='dark'] .big-section,
+html[data-theme='dark'] .tile,
+html[data-theme='dark'] .project-card,
+html[data-theme='dark'] .edu-card,
+html[data-theme='dark'] .contact-card {
+  background: #020617;
+  border-color: #1f2937;
+}
   </style>
 </head>
 <body>
