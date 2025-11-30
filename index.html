@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Indhu Ayyappan | Bioinformatics Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Portfolio of Indhu Ayyappan – Bioinformatics, Genomics, Data Analysis & Reproducible Pipelines." />
+  <style>
+    :root {
+      --bg: #050816;
+      --bg-alt: #0b1020;
+      --card: #111629;
+      --accent: #f9b74a;
+      --accent-soft: rgba(249, 183, 74, 0.12);
+      --text: #f8fafc;
+      --text-muted: #c3c7e1;
+      --border-subtle: #262b3f;
+      --radius-lg: 18px;
+      --radius-pill: 999px;
+      --max-width: 980px;
+      --shadow-soft: 0 18px 35px rgba(0, 0, 0, 0.6);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #1b2450 0, #050816 60%, #020308 100%);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    main {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 1.75rem 1.25rem 2.75rem;
+    }
+
+    /* NAVBAR */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(16px);
+      background: linear-gradient(
+        to bottom,
+        rgba(5, 8, 22, 0.95),
+        rgba(5, 8, 22, 0.7),
+        transparent
+      );
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    }
+
+    .nav-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0.75rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .nav-logo {
+      width: 30px;
+      height: 30px;
+      border-radius: 12px;
+      background: radial-gradient(circle at 30% 20%, #ffe9b8, #f9b74a 40%, #ff7d4f 85%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: #26130b;
+      box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.08);
+    }
+
+    .nav-name {
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav-links a {
+      position: relative;
+      padding-bottom: 2px;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 1px;
+      background: var(--accent);
+      transition: width 0.2s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* HERO */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.5fr);
+      gap: 2rem;
+      align-items: center;
+      padding: 2.4rem 0 2rem;
+    }
+
+    .hero-photo-wrap {
+      display: flex;
+      justify-content: center;
+    }
+
+    .hero-photo {
+      width: 210px;
+      height: 210px;
+      border-radius: 24px;
+      object-fit: cover;
+      border: 2px solid rgba(255, 255, 255, 0.12);
+      box-shadow: var(--shadow-soft);
+      background: #111;
+    }
+
+    .hero-text h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+
+    .hero-tagline {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .btn-primary,
+    .btn-ghost {
+      border-radius: var(--radius-pill);
+      padding: 0.5rem 1.2rem;
+      font-size: 0.86rem;
+      font-weight: 500;
+      border: 1px solid transparent;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.35rem;
+      transition: background 0.18s ease, transform 0.12s ease,
+        box-shadow 0.12s ease, border-color 0.18s ease;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #f9b74a, #ff7d4f);
+      color: #1c120a;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.7);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      border-color: rgba(255, 255, 255, 0.15);
+      color: var(--text-muted);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .hero-meta {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* SECTION WRAPPER */
+    section {
+      padding: 1.75rem 0 0.4rem;
+    }
+
+    .section-header {
+      margin-bottom: 0.8rem;
+    }
+
+    .section-title {
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .section-sub {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    /* ABOUT */
+    .about-card {
+      background: rgba(15, 20, 45, 0.96);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-subtle);
+      padding: 1rem 1.1rem;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .about-card p + p {
+      margin-top: 0.6rem;
+    }
+
+    /* BIG TITLE SECTION */
+    .big-section {
+      margin-top: 1.5rem;
+      padding: 1.1rem 1.2rem;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-subtle);
+      background: radial-gradient(circle at top left, #f9b74a18, transparent 55%),
+        rgba(11, 16, 40, 0.98);
+    }
+
+    .big-section h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+    }
+
+    .big-section p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    /* SKILLS TILES */
+    .tiles {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 1.1rem;
+    }
+
+    .tile {
+      background: rgba(10, 15, 36, 0.96);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-subtle);
+      padding: 0.9rem 0.9rem 0.85rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .tile h4 {
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+      color: var(--text);
+    }
+
+    .tile ul {
+      list-style: none;
+    }
+
+    .tile li + li {
+      margin-top: 0.3rem;
+    }
+
+    /* PROJECTS */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .project-card {
+      background: rgba(11, 17, 40, 0.96);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-subtle);
+      padding: 0.95rem 1rem 0.9rem;
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      transition: transform 0.15s ease, box-shadow 0.15s ease,
+        border-color 0.15s ease, background 0.15s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(249, 183, 74, 0.65);
+      box-shadow: var(--shadow-soft);
+      background: radial-gradient(circle at top left, #f9b74a15, transparent 55%),
+        rgba(11, 17, 40, 0.98);
+    }
+
+    .project-title {
+      font-size: 0.94rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+      color: var(--text);
+    }
+
+    .project-line {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 0.45rem;
+    }
+
+    .project-body {
+      margin-bottom: 0.55rem;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .project-tag {
+      font-size: 0.72rem;
+      padding: 0.15rem 0.55rem;
+      border-radius: 999px;
+      background: rgba(8, 16, 42, 0.96);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .project-link {
+      font-size: 0.8rem;
+      color: var(--accent);
+    }
+
+    /* EXPERIENCE & EDUCATION */
+    .two-col {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      gap: 1.2rem;
+    }
+
+    .timeline {
+      border-left: 1px solid rgba(255, 255, 255, 0.16);
+      padding-left: 1rem;
+      font-size: 0.86rem;
+      color: var(--text-muted);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 1rem;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: -1.32rem;
+      top: 0.25rem;
+      width: 9px;
+      height: 9px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 0 4px rgba(249, 183, 74, 0.3);
+    }
+
+    .timeline-role {
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .timeline-place {
+      font-size: 0.82rem;
+      margin-bottom: 0.15rem;
+    }
+
+    .timeline-time {
+      font-size: 0.78rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .edu-card {
+      background: rgba(11, 17, 40, 0.96);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-subtle);
+      padding: 0.9rem 1rem;
+      font-size: 0.86rem;
+      color: var(--text-muted);
+    }
+
+    .edu-item + .edu-item {
+      margin-top: 0.7rem;
+      padding-top: 0.6rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .edu-title {
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.1rem;
+    }
+
+    .edu-meta {
+      font-size: 0.8rem;
+      margin-bottom: 0.3rem;
+    }
+
+    /* CONTACT */
+    .contact-card {
+      background: rgba(9, 14, 36, 0.96);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-subtle);
+      padding: 0.9rem 1rem 1rem;
+      font-size: 0.86rem;
+      color: var(--text-muted);
+    }
+
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 0.6rem;
+    }
+
+    .chip {
+      padding: 0.3rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      font-size: 0.82rem;
+    }
+
+    /* FOOTER */
+    .footer {
+      max-width: var(--max-width);
+      margin: 1.5rem auto 0;
+      padding: 0 1.25rem 1.7rem;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+      gap: 0.7rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      padding-top: 0.9rem;
+      flex-wrap: wrap;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 860px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .hero-photo-wrap {
+        order: -1;
+      }
+      .two-col {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .tiles {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .projects-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      main {
+        padding-inline: 1rem;
+      }
+      .nav-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+      }
+      .nav-links {
+        justify-content: flex-start;
+      }
+      .tiles {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="nav-inner">
+      <div class="nav-left">
+        <div class="nav-logo">IA</div>
+        <div class="nav-name">Indhu Ayyappan</div>
+      </div>
+      <nav class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero" id="top">
+      <div class="hero-photo-wrap">
+        <!-- Replace assets/profile.jpg with your actual image path -->
+        <img src="assets/profile.jpg" alt="Photo of Indhu Ayyappan" class="hero-photo" />
+      </div>
+      <div class="hero-text">
+        <h1>Hi, I'm Indhu Ayyappan</h1>
+        <p class="hero-tagline">
+          Bioinformatics | Genomics | Data Analysis &amp; Reproducible Pipeline Development
+        </p>
+        <div class="hero-buttons">
+          <a class="btn-primary" href="#contact">Get in Touch</a>
+          <a class="btn-ghost" href="#projects">View Projects</a>
+        </div>
+        <p class="hero-meta">
+          Graduate bioinformatician with an engineering and quality systems background,
+          interested in biological data analysis, workflows, and real-world applications.
+        </p>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="section-header">
+        <h2 class="section-title">About</h2>
+      </div>
+      <div class="about-card">
+        <p>
+          I’m a graduate student in Bioinformatics at the University of Guelph with a previous Master’s
+          in Biological Engineering and industry experience in food manufacturing and quality systems.
+          I’ve worked on HACCP, GMP, microbiological testing, and data-driven problem solving, which makes
+          me very intentional about traceability and reproducibility in my analyses.
+        </p>
+        <p>
+          Now, I work with genomics and transcriptomics datasets, building pipelines that are clean,
+          reproducible, and scalable. I’m especially interested in roles where I can combine computational
+          analysis, biology, and real-world impact.
+        </p>
+      </div>
+
+      <div class="big-section" id="skills">
+        <h3>Building Reproducible Workflows for Biological &amp; Scientific Data</h3>
+        <p>
+          A bioinformatics and genomics enthusiast focused on data analysis, scientific workflows,
+          and real-world biological applications.
+        </p>
+
+        <div class="tiles">
+          <div class="tile">
+            <h4>Bioinformatics &amp; Genomics</h4>
+            <ul>
+              <li>GWAS (PLINK2) &amp; association testing</li>
+              <li>Population genetics (PCA, structure)</li>
+              <li>RNA-seq concepts &amp; differential expression</li>
+              <li>Sequence analysis &amp; motif scanning</li>
+              <li>Barcode &amp; phylogenetic workflows</li>
+              <li>Data QC, filtering &amp; summarization</li>
+            </ul>
+          </div>
+
+          <div class="tile">
+            <h4>Programming &amp; Tools</h4>
+            <ul>
+              <li>Python (pandas, numpy)</li>
+              <li>R (tidyverse, ggplot2)</li>
+              <li>Shell scripting (bash)</li>
+              <li>Git &amp; GitHub</li>
+              <li>JupyterLab &amp; RStudio</li>
+              <li>Reproducible workflows &amp; documentation</li>
+            </ul>
+          </div>
+
+          <div class="tile">
+            <h4>Engineering &amp; Quality Systems</h4>
+            <ul>
+              <li>HACCP, GMP, BRC, ISO 9001</li>
+              <li>Microbiology QC &amp; testing</li>
+              <li>Root-cause analysis</li>
+              <li>Process documentation &amp; SOPs</li>
+              <li>Regulatory compliance mindset</li>
+              <li>Data integrity &amp; traceability</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <div class="section-header">
+        <h2 class="section-title">Projects</h2>
+        <p class="section-sub">A selection of bioinformatics and data analysis work.</p>
+      </div>
+
+      <div class="projects-grid">
+        <!-- Project 1 -->
+        <article class="project-card">
+          <h3 class="project-title">Genome-Wide Association Study Pipeline (Arabidopsis)</h3>
+          <p class="project-line">
+            A reproducible PLINK2 workflow for genotype QC, PCA, GWAS, LD clumping, and visualization.
+          </p>
+          <p class="project-body">
+            Developed a complete GWAS workflow including sample and variant QC, population structure
+            correction, trait association testing, LD clumping, and region extraction. Emphasized clean
+            documentation and version-controlled outputs to keep analyses transparent and reproducible.
+          </p>
+          <div class="project-tags">
+            <span class="project-tag">PLINK2</span>
+            <span class="project-tag">R</span>
+            <span class="project-tag">ggplot2</span>
+            <span class="project-tag">PCA</span>
+            <span class="project-tag">QC Pipeline</span>
+          </div>
+          <a href="#" class="project-link">View project (coming soon)</a>
+        </article>
+
+        <!-- Project 2 -->
+        <article class="project-card">
+          <h3 class="project-title">HPP-Inspired Transcriptomics Explorer</h3>
+          <p class="project-line">
+            A conceptual RNA-seq analysis workflow connecting processing conditions to gene expression.
+          </p>
+          <p class="project-body">
+            Designed an end-to-end transcriptomics workflow including QC, normalization, PCA, differential
+            expression, and biological interpretation. Rooted in engineering and quality systems thinking,
+            focused on scalable, clean analyses that can be adapted to different datasets and conditions.
+          </p>
+          <div class="project-tags">
+            <span class="project-tag">RNA-seq</span>
+            <span class="project-tag">R</span>
+            <span class="project-tag">Python</span>
+            <span class="project-tag">QC</span>
+            <span class="project-tag">PCA</span>
+          </div>
+          <a href="#" class="project-link">View project (coming soon)</a>
+        </article>
+
+        <!-- Project 3 -->
+        <article class="project-card">
+          <h3 class="project-title">Barcode-Based Species Richness (Danioninae)</h3>
+          <p class="project-line">
+            Explored species diversity and sampling completeness using BOLD DNA barcode data.
+          </p>
+          <p class="project-body">
+            Analyzed barcode sequences and BIN assignments to evaluate species richness patterns,
+            sampling effort, and rarefaction trends. Used tidyverse tools to build specaccum curves
+            and summarize species-level insights in a reproducible way.
+          </p>
+          <div class="project-tags">
+            <span class="project-tag">R</span>
+            <span class="project-tag">BOLD</span>
+            <span class="project-tag">ggplot2</span>
+            <span class="project-tag">Biodiversity</span>
+          </div>
+          <a href="#" class="project-link">View project (coming soon)</a>
+        </article>
+
+        <!-- Project 4 -->
+        <article class="project-card">
+          <h3 class="project-title">Promoter Motif Scanner in Maize</h3>
+          <p class="project-line">
+            Python-based motif scanning workflow for co-expressed maize gene promoters.
+          </p>
+          <p class="project-body">
+            Built a BioPython script to parse FASTA files, extract promoter sequences, detect motif
+            occurrences, and generate summary tables. Combined Python preprocessing with R visualization
+            to highlight regulatory patterns in co-expressed genes.
+          </p>
+          <div class="project-tags">
+            <span class="project-tag">Python</span>
+            <span class="project-tag">BioPython</span>
+            <span class="project-tag">R</span>
+            <span class="project-tag">Sequence Analysis</span>
+            <span class="project-tag">Motifs</span>
+          </div>
+          <a href="#" class="project-link">View project (coming soon)</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE & EDUCATION -->
+    <section id="experience">
+      <div class="section-header">
+        <h2 class="section-title">Experience &amp; Education</h2>
+      </div>
+
+      <div class="two-col">
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-role">Quality Associate — Smurfit WestRock</div>
+            <div class="timeline-place">Mississauga &amp; Toronto, ON</div>
+            <div class="timeline-time">2022–2025</div>
+            <p>
+              Supported multi-site quality operations across Mississauga, Toronto, and Montreal.
+              Conducted internal audits, maintained QMS documentation, handled NCRs, and implemented
+              HACCP, GMP, and food defense programs. Delivered monthly quality metrics and provided
+              cGMP and food safety training for employees.
+            </p>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-role">Quality Assurance Technician — The Original Cakerie</div>
+            <div class="timeline-place">London, ON</div>
+            <div class="timeline-time">2021–2022</div>
+            <p>
+              Monitored GMP and BRC compliance on the production floor. Performed internal audits,
+              tracked non-conformances, coordinated microbiological testing, and contributed to
+              root-cause investigations. Generated FSQI reports and worked closely with operations,
+              sanitation, and QC teams.
+            </p>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-role">QC Intern — AstraZeneca Pharmaceuticals</div>
+            <div class="timeline-place">Bangalore, India</div>
+            <div class="timeline-time">2018–2019</div>
+            <p>
+              Conducted dissolution and content uniformity testing for IMDUR formulations. Performed
+              water quality analyses and contributed to QC documentation in a regulated pharmaceutical
+              setting.
+            </p>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-role">Molecular Biology Intern — Metahelix Life Sciences</div>
+            <div class="timeline-place">Bangalore, India</div>
+            <div class="timeline-time">2018</div>
+            <p>
+              Worked on DNA cloning workflows including T-DNA junction sequence identification and
+              co-integrate vector design for transgenic cotton. Supported routine molecular biology assays.
+            </p>
+          </div>
+        </div>
+
+        <aside class="edu-card" id="education">
+          <div class="edu-item">
+            <h3 class="edu-title">Master of Bioinformatics (M.BINF)</h3>
+            <p class="edu-meta">University of Guelph | 2025–2026</p>
+            <p>
+              Graduate studies focused on genomics, transcriptomics, and scientific workflows, with
+              interests in GWAS, RNA-seq, and reproducible research practices.
+            </p>
+          </div>
+
+          <div class="edu-item">
+            <h3 class="edu-title">Master of Engineering — Biological Engineering</h3>
+            <p class="edu-meta">University of Guelph | 2020–2021</p>
+            <p>
+              GPA 3.5/4. Research centered on high-pressure processing (HPP) and non-destructive
+              methods for quality analysis and food safety.
+            </p>
+          </div>
+
+          <div class="edu-item">
+            <h3 class="edu-title">B.Tech — Biotechnology &amp; Microbiology</h3>
+            <p class="edu-meta">Mepco Schlenk Engineering College, India | 2015–2019</p>
+            <p>
+              CGPA 8.23/10. Built foundations in molecular biology, genetics, microbiology, and
+              bioprocess engineering.
+            </p>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="section-header">
+        <h2 class="section-title">Contact</h2>
+        <p class="section-sub">Open to Summer 2026 bioinformatics and computational biology roles.</p>
+      </div>
+      <div class="contact-card">
+        <p>
+          If you’re working on problems at the intersection of biology and data, I’d be happy to connect.
+          I’m especially interested in roles involving genomics, transcriptomics, workflow development,
+          and data quality in research or industry settings.
+        </p>
+        <div class="contact-row">
+          <div class="chip">
+            ✉️
+            <a href="mailto:indhumirra.a@gmail.com">indhumirra.a@gmail.com</a>
+          </div>
+          <div class="chip">
+            💼
+            <a href="https://www.linkedin.com/in/indhu-mirra-744939153" target="_blank" rel="noreferrer">
+              LinkedIn
+            </a>
+          </div>
+          <div class="chip">
+            🧬
+            <a href="https://github.com/IndhuAyyappan" target="_blank" rel="noreferrer">
+              GitHub
+            </a>
+          </div>
+          <div class="chip">
+            🔍 Open to: Bioinformatics / Genomics / Scientific Data roles
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>© <span id="year"></span> Indhu Ayyappan</span>
+    <span>Built with HTML &amp; CSS on GitHub Pages</span>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Smooth scroll for internal links
+    document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+      anchor.addEventListener("click", function (e) {
+        const targetId = this.getAttribute("href");
+        if (!targetId || targetId === "#") return;
+        const el = document.querySelector(targetId);
+        if (!el) return;
+        e.preventDefault();
+        window.scrollTo({
+          top: el.offsetTop - 70,
+          behavior: "smooth",
+        });
+      });
+    });
+  </script>
+</body>
+</html>
